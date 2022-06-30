@@ -335,6 +335,8 @@ func (c *Client) completeMultipartUpload(ctx context.Context, bucketName, object
 		return UploadInfo{}, err
 	}
 
+	fmt.Print(completeMultipartUploadBytes)
+
 	// Instantiate all the complete multipart buffer.
 	completeMultipartUploadBuffer := bytes.NewReader(completeMultipartUploadBytes)
 	reqMetadata := requestMetadata{
