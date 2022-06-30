@@ -27,8 +27,8 @@ import (
 	"time"
 
 	jsoniter "github.com/json-iterator/go"
-	"github.com/minio/minio-go/v7/pkg/notification"
-	"github.com/minio/minio-go/v7/pkg/s3utils"
+	"github.com/waquidvp/minio-go/v7/pkg/notification"
+	"github.com/waquidvp/minio-go/v7/pkg/s3utils"
 )
 
 // SetBucketNotification saves a new bucket notification with a context to control cancellations and timeouts.

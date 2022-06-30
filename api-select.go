@@ -31,8 +31,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/minio/minio-go/v7/pkg/encrypt"
-	"github.com/minio/minio-go/v7/pkg/s3utils"
+	"github.com/waquidvp/minio-go/v7/pkg/encrypt"
+	"github.com/waquidvp/minio-go/v7/pkg/s3utils"
 )
 
 // CSVFileHeaderInfo - is the parameter for whether to utilize headers.

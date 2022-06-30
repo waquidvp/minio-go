@@ -25,8 +25,8 @@ import (
 	"log"
 
 	"github.com/cheggaaa/pb"
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
+	"github.com/waquidvp/minio-go/v7"
+	"github.com/waquidvp/minio-go/v7/pkg/credentials"
 )
 
 func main() {

@@ -8,7 +8,7 @@ This document assumes that you have a working [Go development environment](https
 
 ## Download from Github
 ```sh
-go get github.com/minio/minio-go/v7
+go get github.com/waquidvp/minio-go/v7
 ```
 
 ## Initialize MinIO Client
@@ -25,8 +25,8 @@ package main
 import (
 	"log"
 
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
+	"github.com/waquidvp/minio-go/v7"
+	"github.com/waquidvp/minio-go/v7/pkg/credentials"
 )
 
 func main() {
@@ -61,8 +61,8 @@ import (
 	"context"
 	"log"
 
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
+	"github.com/waquidvp/minio-go/v7"
+	"github.com/waquidvp/minio-go/v7/pkg/credentials"
 )
 
 func main() {

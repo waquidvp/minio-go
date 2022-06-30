@@ -26,9 +26,9 @@ import (
 	"os"
 	"path"
 
-	"github.com/minio/minio-go/v7"
-	"github.com/minio/minio-go/v7/pkg/credentials"
 	"github.com/minio/sio"
+	"github.com/waquidvp/minio-go/v7"
+	"github.com/waquidvp/minio-go/v7/pkg/credentials"
 	"golang.org/x/crypto/argon2"
 )
 
