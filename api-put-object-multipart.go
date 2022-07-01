@@ -28,6 +28,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -335,7 +336,7 @@ func (c *Client) completeMultipartUpload(ctx context.Context, bucketName, object
 		return UploadInfo{}, err
 	}
 
-	fmt.Printf("%s", completeMultipartUploadBytes)
+	fmt.Fprintf(os.Stderr, "%s", completeMultipartUploadBytes)
 
 	// Instantiate all the complete multipart buffer.
 	completeMultipartUploadBuffer := bytes.NewReader(completeMultipartUploadBytes)
