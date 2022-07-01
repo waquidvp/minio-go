@@ -172,7 +172,7 @@ func (c *Client) putObjectMultipartNoStream(ctx context.Context, bucketName, obj
 			return UploadInfo{}, errInvalidArgument(fmt.Sprintf("Missing part number %d", i))
 		}
 		complMultipartUpload.Parts = append(complMultipartUpload.Parts, CompletePart{
-			ETag:       fmt.Sprintf("\"%q\"", part.ETag),
+			ETag:       part.ETag,
 			PartNumber: part.PartNumber,
 		})
 	}
@@ -327,11 +327,23 @@ func (c *Client) completeMultipartUpload(ctx context.Context, bucketName, object
 		return UploadInfo{}, err
 	}
 
+	// Complete multipart upload.
+	var complMultipartUpload completeMultipartUpload
+
+	complMultipartUpload.Parts = make([]CompletePart, len(complete.Parts))
+
+	for i, part := range complete.Parts {
+		complMultipartUpload.Parts[i] = CompletePart{
+			PartNumber: part.PartNumber,
+			ETag:       fmt.Sprintf("%q", part.ETag),
+		}
+	}
+
 	// Initialize url queries.
 	urlValues := make(url.Values)
 	urlValues.Set("uploadId", uploadID)
 	// Marshal complete multipart body.
-	completeMultipartUploadBytes, err := xml.Marshal(complete)
+	completeMultipartUploadBytes, err := xml.Marshal(complMultipartUpload)
 	if err != nil {
 		return UploadInfo{}, err
 	}
