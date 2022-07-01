@@ -172,7 +172,7 @@ func (c *Client) putObjectMultipartNoStream(ctx context.Context, bucketName, obj
 			return UploadInfo{}, errInvalidArgument(fmt.Sprintf("Missing part number %d", i))
 		}
 		complMultipartUpload.Parts = append(complMultipartUpload.Parts, CompletePart{
-			ETag:       part.ETag,
+			ETag:       fmt.Sprintf("\"%s\"", part.ETag),
 			PartNumber: part.PartNumber,
 		})
 	}
