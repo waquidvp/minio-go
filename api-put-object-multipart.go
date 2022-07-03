@@ -328,27 +328,31 @@ func (c *Client) completeMultipartUpload(ctx context.Context, bucketName, object
 	}
 
 	// Complete multipart upload.
-	var complMultipartUpload completeMultipartUpload
+	// var complMultipartUpload completeMultipartUpload
 
-	complMultipartUpload.Parts = make([]CompletePart, len(complete.Parts))
+	// complMultipartUpload.Parts = make([]CompletePart, len(complete.Parts))
 
-	for i, part := range complete.Parts {
-		complMultipartUpload.Parts[i] = CompletePart{
-			PartNumber: part.PartNumber,
-			ETag:       fmt.Sprintf("%q", part.ETag),
-		}
-	}
+	// for i, part := range complete.Parts {
+	// 	complMultipartUpload.Parts[i] = CompletePart{
+	// 		PartNumber: part.PartNumber,
+	// 		ETag:       fmt.Sprintf("%q", part.ETag),
+	// 	}
+	// }
 
 	// Initialize url queries.
 	urlValues := make(url.Values)
 	urlValues.Set("uploadId", uploadID)
 	// Marshal complete multipart body.
-	completeMultipartUploadBytes, err := xml.Marshal(complMultipartUpload)
+	// completeMultipartUploadBytes, err := xml.Marshal(complMultipartUpload)
+	completeMultipartUploadBytes, err := xml.Marshal(complete)
 	if err != nil {
 		return UploadInfo{}, err
 	}
 
-	fmt.Fprintf(os.Stderr, "%s", completeMultipartUploadBytes)
+	f, _ := os.Create("debug.xml")
+	defer f.Close()
+
+	fmt.Fprintf(f, "%s", completeMultipartUploadBytes)
 
 	// Instantiate all the complete multipart buffer.
 	completeMultipartUploadBuffer := bytes.NewReader(completeMultipartUploadBytes)
