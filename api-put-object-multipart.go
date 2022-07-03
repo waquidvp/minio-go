@@ -352,7 +352,8 @@ func (c *Client) completeMultipartUpload(ctx context.Context, bucketName, object
 	f, _ := os.Create("debug.xml")
 	defer f.Close()
 
-	fmt.Fprintf(f, "%s", completeMultipartUploadBytes)
+	f.Write(completeMultipartUploadBytes)
+	f.Sync()
 
 	// Instantiate all the complete multipart buffer.
 	completeMultipartUploadBuffer := bytes.NewReader(completeMultipartUploadBytes)
